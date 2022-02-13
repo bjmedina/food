@@ -1,0 +1,249 @@
+
+<script>
+  // NOT the best way to implement this BUT it works for now
+  // list of all food places (at different locations)
+  var harvard    = ["DIG", "Alden and Harlow", "Felipe's", "Smoke Shop", "Pinocchios", "Shake Shack", "Nine Tastes", "Tasty Burger", "Clover", "Saloniki", "Sweetgreen", "Spyce", "Menya Jiro", "Kaido", "Veggie Grill", "Otto", "Orinocos"];
+  var somerville = ["Dakzen", "Highland kitchen", "9 Zaab", "Dumpling Xuan", "No. 2 Arams House of Pizza"];
+  var central    = ["Veggie Galaxy", "Happy Lamb", "5 Spices", "Mary Chung", "Andala", "Mad Monkfish"]
+  var kendall    = ["Mamalehs", "Vester", "Smoke Shop", "Cava", "A4", "Oath", "Flour", "Roxy's", "Al's", "Saloniki", "Bean Town"];
+  var inman      = ["Punjabi Daba", "oleana"]
+  var boston     = ["no places yet "];
+  var china_town = ["Ding Ho", "Gong Cha", "Taiwan Cafe"]
+  var places     = [""];
+
+  // This is a dictionary of all possible places to eat.
+  var dict = {"Harvard": harvard,
+              "Somerville": somerville,
+              "Central": central,
+              "Boston": boston,
+              "Inman": inman,
+              "Kendall": kendall,
+              "China Town": china_town};
+
+  // Store choice selected by user
+  var choice = ""
+
+  function selectPlace(selected) {
+    choice = selected;
+    var title = "RANDOM PLACE TO EAT AT\n" + choice.toUpperCase(); + "\nGENERATOR";
+    document.getElementById("main_page").style.display = "none";
+    //document.getElementById(appear).style.display = "inline";
+    document.getElementById("choice_page").style.display = "";
+    document.getElementById("place_title").textContent   = title;
+    places = dict[choice];
+  };
+
+  function randomPlace() {
+    var random_place = places[Math.floor(Math.random() * places.length)];
+    document.getElementById("random_place").textContent = random_place;
+  };
+
+  function back(){
+    document.getElementById("main_page").style.display = "";
+    //document.getElementById(appear).style.display = "inline";
+    document.getElementById("choice_page").style.display = "none";
+    random_place = "";
+    document.getElementById("random_place").textContent = random_place;
+    choice = "";
+  };
+
+</script>
+
+<html>
+
+ <head>
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,800&family=Roboto+Mono:wght@100;400;700&display=swap" rel="stylesheet">
+   <style type="text/css">.wrapper {
+   height: 80%;
+   width: 100%;
+   display: table;
+   }
+
+     .page {
+     display: table-cell;
+     vertical-align: text-top;
+     }
+
+     .cell {
+     margin: 0 auto;
+     padding: 10px;
+     width: 850px;
+     }
+
+     #pagenum {
+     text-align: center;
+     font-style: italic;
+     }
+
+     .disclaimer {
+     font-weight: bold;
+     color: #555555;
+     }
+
+     .warning {
+     /* font-weight: bold; */
+     /* font-family: 'Roboto Mono'; */
+     /* font-style: italic; */
+     font-weight: 800;
+     /* font-size:25px; */
+     }
+
+     h1 {
+     font-family: 'Roboto Mono';
+     font-weight: 400;
+     font-size: 40px;
+     color: #5d6ef1;
+     }
+
+     h2 {
+     font-family: 'Roboto Mono';
+     font-weight: 400;
+     font-size:25px;
+     color: #5d6ef1;
+     }
+
+     h3 {
+     font-family: 'Roboto Mono';
+     font-weight: 400;
+     font-size:100px;
+     color: #5d6ef1;
+     }
+
+
+     .button {
+     	/* background-color:#5d6ef1; */
+       background-color:#efefef;
+
+     	border-radius:16px;
+     	border:2px solid #ffffff;
+     	/* display:inline-block; */
+     	cursor:pointer;
+     	/* color:#ffffff; */
+       color:#5d6ef1;
+     	font-family: 'Roboto Mono', sans-serif;
+     	font-size:25px;
+       font-weight: 800;
+     	padding:5px 10px;
+     	text-decoration:none;
+     }
+
+     .button:hover {
+     	/* background-color:#9de5b9; */
+       /* background-color:#9de5b9; */
+       border:5px solid #5d6ef1;
+     }
+
+     .button:active {
+     	position:relative;
+     	top:1px;
+     }
+
+     .button:disabled {
+       color:#ffffff;
+       border:2px solid #ffffff;
+       cursor: not-allowed;
+       pointer-events: all !important;
+     }
+
+     input[type="button"] {
+         outline:none;
+     }
+
+     /* The container */
+     .container {
+       display: block;
+       position: relative;
+       padding-left: 35px;
+       /* margin-bottom: 12px; */
+       cursor: pointer;
+       /* font-size: 22px; */
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+       user-select: none;
+     }
+
+     /* Hide the browser's default radio button */
+     .container input {
+       position: absolute;
+       opacity: 0;
+       cursor: pointer;
+     }
+
+     .disabled {
+       pointer-events: none;
+       /* opacity: 0.2; */
+     }
+
+     input[type=text], select {
+       width: 7%;
+       padding: 6px 15px;
+       /* margin: 8px 0; */
+       display: inline-block;
+       border: 2px solid #eee;
+       border-radius: 8px;
+       box-sizing: border-box;
+       font-family: 'Roboto Mono', sans-serif;
+       font-size:1em;
+       /* color: #5d6ef1; */
+     }
+
+     input[type=text]:hover {
+       border: 2px solid #5d6ef1;
+     }
+
+     input:focus, textarea {
+       outline: none !important;
+     }
+
+     table {
+       margin-left:1.5em;
+     }
+
+     ::selection {
+       background: #9de5b9; /* WebKit/Blink Browsers */
+     }
+
+   </style>
+
+ </head>
+
+  <!-- Main page -->
+  <div class="wrapper">
+    <div class="page" id="main_page">
+      <div class="cell">
+          <div align="center">
+            <h1>What area?</h1>
+            <h2>Pick a place:</h2>
+          </div>
+          <!--The below statement MUST appear as the first page on any MIT turk study-->
+          <div class='buttons' align="center">
+            <input type="button" class="button" name="harvard" value="Harvard" id="harvard" onclick="selectPlace('Harvard');"></input>
+            <input type="button" class="button" name="somerville" value="Somerville" id="somerville" onclick="selectPlace('Somerville');"></input>
+            <input type="button" class="button" name="central" value="Central" id="central" onclick="selectPlace('Central');"></input>
+            <input type="button" class="button" name="kendall" value="Kendall" id="kendall" onclick="selectPlace('Kendall');"></input>
+            <input type="button" class="button" name="boston" value="Inman" id="inman" onclick="selectPlace('Inman');"></input>
+            <input type="button" class="button" name="boston" value="Boston" id="boston" onclick="selectPlace('Boston');"></input>
+            <input type="button" class="button" name="china" value="China Town" id="china_town" onclick="selectPlace('China Town');"></input>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- generate page -->
+  <div class="wrapper">
+    <div class="page" id="choice_page" style="display: none;">
+      <div class="cell">
+        <div align="center">
+           <h1 id="place_title"></h1>
+           <button type="button" class="button" onclick="back();">Back</button>
+        </div>
+        <div align="center">
+           <button type="button" class="button" onclick="randomPlace();"> Generate random place</button>
+           <h3 id="random_place"></h3>
+        </div>
+     </div>
+    </div>
+  </div>
+
+</html>
