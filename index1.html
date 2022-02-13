@@ -69,6 +69,28 @@
     return a[~~(Math.random() * a.length)];
   }
 
+  window.onload = init;
+  function init(){
+    // The code to be run when the dom has loaded
+
+    // let areaCodes = Object.keys(areas);
+    
+    // Generate buttons from area object.
+    for (let currentAreaName in areas) {
+      let currentAreaObject = areas[currentAreaName];
+
+      let buttonContainer = document.getElementById("button-container");
+      
+      let nextButton = document.createElement("input");
+      nextButton.setAttribute("type", "button");
+      nextButton.setAttribute("class", "button");
+      nextButton.setAttribute("value", currentAreaObject.displayName);
+      nextButton.setAttribute("onclick", "selectPlace('"+currentAreaName+"');");
+
+      buttonContainer.appendChild(nextButton);
+    }
+  }
+
 </script>
 
 <html>
@@ -245,21 +267,7 @@
         <h2>Pick a to eat at place:</h2>
       </div>
       <!--The below statement MUST appear as the first page on any MIT turk study-->
-      <div class='buttons' align="center">
-        <input type="button" class="button" name="harvard" value="Harvard" id="harvard"
-          onclick="selectPlace('harvard');"></input>
-        <input type="button" class="button" name="somerville" value="Somerville" id="somerville"
-          onclick="selectPlace('somerville');"></input>
-        <input type="button" class="button" name="central" value="Central" id="central"
-          onclick="selectPlace('central');"></input>
-        <input type="button" class="button" name="kendall" value="Kendall" id="kendall"
-          onclick="selectPlace('kendall');"></input>
-        <input type="button" class="button" name="inman" value="Inman" id="inman"
-          onclick="selectPlace('inman');"></input>
-        <input type="button" class="button" name="boston" value="Boston" id="boston"
-          onclick="selectPlace('boston');"></input>
-        <input type="button" class="button" name="china_town" value="China Town" id="china_town"
-          onclick="selectPlace('china_town');"></input>
+      <div class='buttons' align="center" id="button-container">
       </div>
     </div>
   </div>
